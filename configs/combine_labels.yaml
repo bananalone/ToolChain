@@ -1,0 +1,68 @@
+# 0
+- list_dir: 
+    args: 
+      - '"/Users/yinxu/Documents/proj_drainage/yolov5_docker_mount/dataset/labels_v1"'
+    kwargs:
+      pattern: '"*.txt"'
+
+# 1
+- natural_sort:
+    args:
+      - outs[0]
+    kwargs:
+      key: lambda s:s.lower()
+
+# 2
+- index_of_list:
+    args:
+      - outs[0]
+      - '"/Users/yinxu/Documents/proj_drainage/yolov5_docker_mount/dataset/labels_v1/20200601-20201015wKgCbF8EnKaAHDscAAGQekNzyZA239.txt"'
+
+# 3
+- sublist:
+    args:
+      - outs[0]
+    kwargs:
+      start: 0
+      end: outs[2]
+
+# 4
+- copyfiles:
+    args:
+      - outs[3]
+      - '"/Users/yinxu/Documents/proj_drainage/yolov5_docker_mount/dataset/labels_v3"'
+
+# 5
+- list_dir: 
+    args: 
+      - '"/Users/yinxu/Documents/proj_drainage/yolov5_docker_mount/dataset/labels_v2"'
+    kwargs:
+      pattern: '"*.txt"'
+
+# 6
+- natural_sort:
+    args:
+      - outs[5]
+    kwargs:
+      key: lambda s:s.lower()
+
+# 7
+- index_of_list:
+    args:
+      - outs[5]
+      - '"/Users/yinxu/Documents/proj_drainage/yolov5_docker_mount/dataset/labels_v2/20200601-20201015wKgCbF8EnKaAHDscAAGQekNzyZA239.txt"'
+
+# 8
+- sublist:
+    args:
+      - outs[5]
+    kwargs:
+      start: outs[7]
+      end: -1
+
+# 9
+- copyfiles:
+    args:
+      - outs[8]
+      - '"/Users/yinxu/Documents/proj_drainage/yolov5_docker_mount/dataset/labels_v3"'
+
