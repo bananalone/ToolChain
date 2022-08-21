@@ -2,7 +2,7 @@ import argparse
 
 
 from utils import print_args, try_catch
-from toolhub import factory
+from factory import get_factory
 from ToolChain import ToolChain
 
 
@@ -16,6 +16,7 @@ def get_args():
 
 # @try_catch
 def main(args):
+    factory = get_factory()
     chain = ToolChain(factory, args.config)
     chain.run()
 
