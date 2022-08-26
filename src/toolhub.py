@@ -93,7 +93,7 @@ def filter(l: List[Any], rule = lambda x: True) -> List[Any]:
 
 def filter_blank_file(file: str) -> bool:
     f = Path(file)
-    return f.is_file() and len(f.read_text().split()) == 0 
+    return f.is_file() and len(f.read_text().strip().split()) == 0 
 
 
 @factory.register('filter_blank_files')

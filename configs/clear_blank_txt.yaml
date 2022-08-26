@@ -1,0 +1,21 @@
+# 0
+- glob:
+    args: ~
+    kwargs:
+      dir: '"/Users/yinxu/Documents/GitHub/ToolChain/test"'
+      pattern: '"*.txt"'
+
+# 1
+- print_list:
+    args:
+      - outs[0]
+
+# 2
+- filter_blank_files:
+    args:
+      - outs[0]
+
+# 3
+- removefiles:
+    args:
+      - outs[2]
